@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Excel File{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <input type="file" name="myfile">
+        <button type="submit">Upload</button>
+    </form>
+    <h2>Upload Excel file</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock body %}
